@@ -12,13 +12,17 @@ readme = "README.md"
 
 [features]
 default = [ "float" ]
-float = ["num"]
+float = ["num", "unreachable"]
 
 [lib]
 name = "introsort"
 path = "src/lib.rs"
 test = false
 bench = false
+
+[dependencies.unreachable]
+version = "0.0.2"
+optional = true
 
 [dependencies.num]
 version = "0.1.25"
