@@ -2,9 +2,7 @@
 
 #![feature(unboxed_closures)]
 #![feature(no_std)]
-#![feature(core)]
-
-extern crate core;
+#![feature(core_slice_ext)]
 
 pub use sort::{sort, sort_by, insertion_sort, heapsort};
 #[cfg(feature = "float")]
