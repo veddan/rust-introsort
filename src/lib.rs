@@ -2,11 +2,8 @@
 
 #![feature(unboxed_closures)]
 #![feature(no_std)]
-#![feature(core)]
-#![feature(core_prelude)]
-#![feature(core_slice_ext)]
 
-extern crate core;
+#![feature(core_slice_ext)]
 
 #[cfg(feature  = "float")]
 extern crate unreachable;
