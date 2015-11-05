@@ -59,8 +59,8 @@ fn sort_big_sorted(b: &mut Bencher) {
 #[bench]
 fn sort_few_unique(b: &mut Bencher) {
     let mut v = Vec::new();
-    for i in (0u32 .. 10) {
-        for _ in (0usize .. 100) {
+    for i in 0u32 .. 10 {
+        for _ in 0usize .. 100 {
             v.push(i);
         }
     }
@@ -151,7 +151,7 @@ fn sort_strings(b: &mut Bencher) {
     let n = 10_000usize;
     let mut v = Vec::with_capacity(n);
     let mut bytes = 0;
-    for _ in (0 .. n) {
+    for _ in 0 .. n {
         let len = rng.gen_range(0, 60);
         bytes += len;
         let mut s = String::with_capacity(len);
@@ -159,7 +159,7 @@ fn sort_strings(b: &mut Bencher) {
             v.push(s);
             continue;
         }
-        for _ in (0 .. len) {
+        for _ in 0 .. len {
             s.push(rng.gen_range(b'a', b'z') as char);
         }
         v.push(s);
