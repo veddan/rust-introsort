@@ -1,3 +1,7 @@
 *.swp
+*.kate-swp
+*.rlib
+*.so
+callgrind.out.*
 Cargo.lock
 target
