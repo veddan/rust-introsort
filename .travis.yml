@@ -1,6 +1,6 @@
 language: rust
 rust:
-  - nightly
+  - beta
 script:
   - cargo build -v
   - cargo test -v
