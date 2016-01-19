@@ -1,5 +1,4 @@
 #![feature(test)]
-#![feature(unboxed_closures)]
 
 extern crate introsort;
 extern crate test;

@@ -1,8 +1,4 @@
-#![feature(test)]
-#![feature(step_by)]
-
 extern crate introsort;
-extern crate test;
 extern crate rand;
 
 use introsort::{sort_by, insertion_sort, heapsort};
@@ -12,10 +8,11 @@ macro_rules! do_test_sort(
     ($sortfun:ident) => ({
         let cmp = |a: &usize, b: &usize| a.cmp(b);
         let cmp_rev = |a: &usize, b: &usize| b.cmp(a);
-        for len in (4usize .. 250).step_by(5) {
+        let mut len = 4usize;
+        while len < 250 {
             for _ in 0isize .. 100 {
                 let mut v = weak_rng().gen_iter::<u8>().take(len).map(|x| 10 + (x % 89) as usize)
-                                        .collect::<Vec<usize>>();
+                                      .collect::<Vec<usize>>();
                 let mut v1 = v.clone();
 
                 $sortfun(&mut v[..], &cmp);
@@ -27,6 +24,7 @@ macro_rules! do_test_sort(
                 $sortfun(&mut v1[..], &cmp_rev);
                 assert!(v1.windows(2).all(|w| w[0] >= w[1]));
             }
+            len += 5;
         }
         // shouldn't fail/crash
         let mut v: [usize; 0] = [];
