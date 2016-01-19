@@ -44,6 +44,7 @@ Unlike the standard library sort function, introsort is _not_ a stable sort.
 At its heart, it is a dual-pivot quicksort.
 For partition with many equal elements, it will instead use a single-pivot quicksort optimized for this case.
 It detects excessive recursion during quicksort and switches to heapsort if need be, guaranteeing O(n log(n)) runtime on all inputs.
+Due to the partitioning method(s) used, the heapsort will only be used in exceedingly rare circumstances.
 For small partitions it uses insertion sort instead of quicksort.
 
 Unlike the `std` sort, it does not allocate.

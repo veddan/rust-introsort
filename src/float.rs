@@ -2,21 +2,21 @@ use super::sort::{sort_by};
 use num::{Float,zero};
 use unreachable::unreachable;
 
-/// Sorts floating point number.
+/// Sorts floating point numbers efficiently.
 /// The ordering used is
 /// | -inf | < 0 | -0 | +0 | > 0 | +inf | NaN |
 pub fn sort_floats<T: Float>(v: &mut [T]) {
     /*
      * We don't have hardware support for a total order on floats. NaN is not
      * smaller or greater than any number. We want NaNs to be last, so we could
-     * just use is_nan() in the comparison function. It turns out that hurts
+     * just use is_nan() in the comparison function. It turns out that this hurts
      * performance a lot, and in most cases we probably don't have any NaNs anyway.
      * 
-     * The solution is to first move all NaNs to the end of the array, and the
+     * The solution is to first move all NaNs to the end of the array, and then
      * sort the remainder with efficient comparisons. After sorting, the zeros
-     * might be in the wrong order, since -0 and 0 compare equal, but we want
-     * -0 to be sorted before 0. We binary search to find the zero interval fix
-     * them up.
+     * might be in the wrong order since -0 and 0 compare equal. We want
+     * -0 to be sorted before 0. We binary search to find the interval containing
+     * all zeros and perform a counting sort on it.
      */
 
     if v.len() <= 1 {
