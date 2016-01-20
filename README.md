@@ -9,12 +9,14 @@ It does however depend on `core`, but has no other dependencies except for testi
 To use with cargo, add the following to your `Cargo.toml`:
 ```toml
 [dependencies]
-introsort = "0.5.1"
+introsort = "0.6.0"
 ```
 and in your crate root, add
 ```rust
 extern crate introsort;
 ```
+The crate is buildable and testable on 1.6.0-beta, though not 1.5.0 due to lack of `#[no_std]`.
+Running the benchmarks only works on nightly.
 
 ## Interface ##
 The interface is similar to the standard library `sort` and `sort_by` functions.
