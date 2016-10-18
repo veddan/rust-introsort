@@ -1,6 +1,6 @@
 use super::sort::{sort_by};
 use num_traits::{Float, zero};
-use unreachable::unreachable;
+use unreachable::UncheckedOptionExt;
 
 /// Sorts floating point numbers efficiently.
 /// The ordering used is
@@ -39,11 +39,9 @@ pub fn sort_floats<T: Float>(v: &mut [T]) {
     }
 
     // Sort the non-NaN part with efficient comparisons
-    sort_by(&mut v[..rnan + 1], &|x: &T, y: &T|
-        match x.partial_cmp(y) {
-            Some(ord) => ord,
-            None      => unsafe { unreachable() }
-        });
+    sort_by(&mut v[..rnan + 1], &|x: &T, y: &T| unsafe {
+        x.partial_cmp(y).unchecked_unwrap()
+    });
 
 
     let left = find_first_zero(&v[..rnan + 1]);
