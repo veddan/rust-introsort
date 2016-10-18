@@ -14,7 +14,7 @@ readme = "README.md"
 
 [features]
 default = [ "float" ]
-float = ["num", "unreachable"]
+float = ["num-traits", "unreachable"]
 
 [lib]
 name = "introsort"
@@ -26,8 +26,8 @@ bench = false
 version = "0.0.2"
 optional = true
 
-[dependencies.num]
-version = "0.1.25"
+[dependencies.num-traits]
+version = "0.1.36"
 optional = true
 
 [dev-dependencies]

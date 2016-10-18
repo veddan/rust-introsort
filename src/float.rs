@@ -1,5 +1,5 @@
 use super::sort::{sort_by};
-use num::{Float,zero};
+use num_traits::{Float, zero};
 use unreachable::unreachable;
 
 /// Sorts floating point numbers efficiently.
