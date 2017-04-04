@@ -18,6 +18,8 @@ extern crate introsort;
 The crate is buildable and testable on 1.6.0-beta, though not 1.5.0 due to lack of `#[no_std]`.
 Running the benchmarks only works on nightly.
 
+A more actively maintained version of this project, with several improvements, can be found at https://github.com/notriddle/quickersort.
+
 ## Interface ##
 The interface is similar to the standard library `sort` and `sort_by` functions.
 
